@@ -43,8 +43,9 @@ personModel.findUser = function(inputname, inputpasswd, callback) {
 }
 
 //注册时插入用户
-personModel.insertUser = function(inputname, inputpasswd, inputaccount, callback) {
+personModel.insertUser = function(inputid, inputname, inputpasswd, inputaccount, callback) {
 	connection.query('insert into person set ?',{
+					personid : inputid,
 					name : inputname,
 					password : inputpasswd,
 					account : inputaccount

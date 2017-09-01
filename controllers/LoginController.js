@@ -45,11 +45,12 @@ LoginController.register = function(req, res, next) {
 
 //实现注册
 LoginController.doregister = function(req, res, next) {
+	var id = req.body.id;
 	var name = req.body.name;
 	var passwd = req.body.passwd;
 	var account = req.body.account;
 
-	personModel.insertUser(name, passwd, account, function(resData) {
+	personModel.insertUser(id, name, passwd, account, function(resData) {
 		if (resData.data.length !== 0) {
 			res.redirect('/login');
 		}else {

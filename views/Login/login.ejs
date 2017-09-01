@@ -2,13 +2,18 @@
 <html>
 <head>
 	<title>登陆页面</title>
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 <body>
-	<form method="post" action="/dologin">
-		name: <input type="test" name="name"> <br>
-		password: <input type="password" name="passwd"> <br>
-		<input type="submit" value="submit">
-	</form>
-	<a href="/register">注册</a>
+	<div id = "wrapper">
+		<div id="main">
+			<form method="post" action="/dologin">
+				name    : <input type="test" name="name" class="name"> <br>
+				password: <input type="password" name="passwd" class="passwd"> <br>
+				<input type="submit" value="submit" class="submit">
+			</form>
+			<a href="/register">注册</a>
+		</div>
+	</div>	
 </body>
 </html>
