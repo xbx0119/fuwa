@@ -1,5 +1,6 @@
 var inputModuel = require('../models/inputModel');
 var warehouseModel = require('../models/warehouseModel');
+var outputModel = require('../models/outputModel');
 
 var StorageController = {};
 
@@ -31,4 +32,17 @@ StorageController.warehouse = function(req, res, next) {
 
 }
 
+//遍历output表
+StorageController.output = function(req, res, next) {
+	var resData = {
+		code: 0,
+		data: {}
+	}
+	outputModel.findAlloutput(function(data) {
+		resData.data = data.data;
+
+		res.render('Storage/output', resData);
+	});
+
+}
 module.exports = StorageController;

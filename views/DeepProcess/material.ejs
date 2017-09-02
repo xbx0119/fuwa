@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>福娃糙米</title>
+    <title>原料信息material</title>
 </head>
 
 <body>
@@ -26,17 +26,26 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>姓名</th>
-                                        <th>职位</th>
-                                        
+                                        <th>materialid</th>
+                                        <th>productid</th>
+                                        <th>date</th>
+                                        <th>weight</th>
+                                        <th>kind</th>
+                                        <th>source</th>
+                                        <th>personid</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                 <% for (var i = 0;i < data.length;i++) {%>
                                     <tr class="gradeA">
-                                        <td><%=data[i].name%></td>
-                                        <td><%=data[i].account%></td>
+                                        <td><%=data[i].materialid%></td>
+                                        <td><%=data[i].productid%></td>
+                                        <td><%=data[i].date%></td>
+                                        <td><%=data[i].weight%></td>
+                                        <td><%=data[i].kind%></td>
+                                        <td><%=data[i].source%></td>
+                                        <td><%=data[i].personid%></td>
                                     </tr>   
                                 <% } %>
                                     
@@ -59,3 +68,4 @@
 </body>
 
 </html>
+
