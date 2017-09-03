@@ -18,6 +18,8 @@ Router.get('/register', LoginController.register);//显示注册页面
 Router.post('/doregister', LoginController.doregister);//实现注册
 
 Router.get('/person', PersonController.person);//显示人员管理页面
+Router.get('/addperson', PersonController.addperson);//显示添加人员页面
+Router.post('/doaddperson', PersonController.doaddperson);//实现添加用户
 
 Router.get('/input', StorageController.input);//显示input页面
 Router.get('/warehouse', StorageController.warehouse);//显示warehouse页面
