@@ -8,7 +8,7 @@ struct:
 	- 药品管理 DrugManagement
 		- 药品信息 drug
 	- 秧苗管理 SeedlingManagement
-		- 秧苗信息 seeding
+		- 秧苗信息 seeding * seedling
 
 - 种植 Plant
 	- 种植管理 PlantManagement
@@ -17,20 +17,27 @@ struct:
 	- 收割管理 HarvestManagement
 		- 收割信息 harvest
 
+
+			+plant2input
 - 仓储 Storage
-	- 入库管理 input
-	- 仓库管理 warehouse
-	- 出库管理 output
+	- 入库管理 input * 
+	 		  +input2warehouse
+	- 仓库管理 warehouse *
+	- 出库管理 output -> warehouse2feed
 
 - 粗加工 RoughProcess
-	- 进料管理 feed
+	- 进料管理 feed *
 	- 出料管理 feed2product
 
 - 深加工 DeepProcess
 	- 原料加工 RawMaterialProcessing
-		- 原料信息 material
-	- 产品管理 ProductManagement
+		- 原料信息 material ?
+				  + material2product
+	- 产品管理 ProductManagement 
 		- 产品信息 product
+		 		+ injection
+		 		+ dry
+		 		+ puffed
 
 
 - 质检管理 Inspect
@@ -43,7 +50,7 @@ struct:
 		- 内包装质检 package_quality_inspect
 
 - 用户管理 Person
-	- 用户信息 person
+	- 用户信息 person *
 
 - 登陆 Login
 	- 登陆 login

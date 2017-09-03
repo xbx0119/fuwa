@@ -29,8 +29,8 @@
                                 <thead>
                                     <tr>
                                         <th>warehouseid</th>
-                                        <th>feedid</th>
-                                        <th>surface</th>
+                                        <th>place</th>
+                                        
                                         <th>capacity</th>
                                         <th>standard</th>
                                         <th>personid</th>
@@ -42,8 +42,8 @@
                                 <% for (var i = 0;i < data.length;i++) {%>
                                     <tr class="gradeA">
                                         <td><%=data[i].warehouseid%></td>
-                                        <td><%=data[i].feedid%></td>
-                                        <td><%=data[i].surface%></td>
+                                        <td><%=data[i].place%></td>
+                                        
                                         <td><%=data[i].capacity%></td>
                                         <td><%=data[i].standard%></td>
                                         <td><%=data[i].personid%></td>
@@ -61,7 +61,7 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <a href="#" class="add">添加</a>
+            <a href="/addwarehouse" class="add">添加</a>
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->

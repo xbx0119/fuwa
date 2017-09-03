@@ -33,9 +33,6 @@ LoginController.dologin = function(req, res, next) {
 			res.redirect('/login');
 		}
 	});
-
-
-	
 }
 
 //显示注册页面
