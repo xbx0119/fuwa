@@ -1,7 +1,7 @@
 var seedModel = {};
 
-//遍历product表
-seedModel.findAllseed = function(callback) {
+//遍历seed表
+seedModel.findAllSeed = function(callback) {
 	connection.query('select * from seed', function (error, results, fields) {
 		var resData = {
 			code: 0,
