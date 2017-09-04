@@ -171,7 +171,7 @@ create table feed (
 );
 
 -- 出库
-create table warehousetofeed (
+create table warehouse2feed (
    warehouseid        varchar(200) not null, -- 仓库id
    feedid             varchar(200) not null, -- 进料id
    personid           varchar(200),

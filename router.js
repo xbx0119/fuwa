@@ -7,6 +7,7 @@ var PersonController = require('./controllers/PersonController');
 var StorageController = require('./controllers/StorageController');
 var RoughProcessController = require('./controllers/RoughProcessController');
 var DeepProcessController = require('./controllers/DeepProcessController');
+var Trace = require('./controllers/Trace');
 
 Router.get('/', IndexController.index);
 Router.get('/index', IndexController.index);
@@ -28,5 +29,9 @@ Router.get('/feed2product', RoughProcessController.feed2product);//显示feed2pr
 
 Router.get('/material', DeepProcessController.material);
 Router.get('/product', DeepProcessController.product);
+
+
+Router.get('/trace/', Trace.index);
+Router.post('/trace/trace', Trace.trace);
 
 module.exports = Router;
