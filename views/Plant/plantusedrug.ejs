@@ -28,11 +28,12 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>seedid</th>
+                                        <th>plantid</th>
+                                        
                                         <th>drugid</th>
-                                        <th>concentration</th>
-                                        <th>startdate</th>
-                                        <th>enddata</th>
+                                        <th>dosage</th>
+                                        <th>effect</th>
+                                        <th>date</th>
                                         <th>personid</th>
                                         
                                     </tr>
@@ -41,12 +42,13 @@
 
                                 <% for (var i = 0;i < data.length;i++) {%>
                                     <tr class="gradeA">
-                                        <td><%=data[i].seedid%></td>                                     
+                                        
+                                        <td><%=data[i].plantid%></td>
                                         <td><%=data[i].drugid%></td>
-                                        <td><%=data[i].concentration%></td>
-                                        <td><%=data[i].startdate%></td>                             
-                                        <td><%=data[i].enddata%></td>
-                                        <td><%=data[i].personid%></td>                                        
+                                        <td><%=data[i].dosage%></td>
+                                        <td><%=data[i].effect%></td>
+                                        <td><%=data[i].date%></td>
+                                        <td><%=data[i].personid%></td>
                                     </tr>   
                                 <% } %>
                                     

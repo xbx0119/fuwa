@@ -2,6 +2,7 @@ var drugModel = require('../models/drugModel');
 var SeedlingModel = require('../models/seedlingModel');
 var SeedModel = require('../models/seedModel');
 var SeedsoakdrugModel = require('../models/seedsoakdrugModel');
+var SeedlingspraydrugModel = require('../models/seedlingspraydrugModel');
 
 var SeedingController = {};
 
@@ -57,6 +58,20 @@ SeedingController.seedsoakdrug = function(req, res, next) {
 		resData.data = data.data;
 
 		res.render('Seeding/seedsoakdrug', resData);
+	});
+
+}
+
+//遍历seedlingspraydrug表
+SeedingController.seedlingspraydrug = function(req, res, next) {
+	var resData = {
+		code: 0,
+		data: {}
+	}
+	SeedlingspraydrugModel.findAllSeedlingspraydrug(function(data) {
+		resData.data = data.data;
+
+		res.render('Seeding/seedlingspraydrug', resData);
 	});
 
 }

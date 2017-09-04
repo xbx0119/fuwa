@@ -8,7 +8,7 @@ var StorageController = require('./controllers/StorageController');
 var RoughProcessController = require('./controllers/RoughProcessController');
 var DeepProcessController = require('./controllers/DeepProcessController');
 var SeedingController = require('./controllers/SeedingController');
-
+var PlantController = require('./controllers/PlantController');
 
 Router.get('/', IndexController.index);
 Router.get('/index', IndexController.index);
@@ -27,6 +27,12 @@ Router.get('/drug', SeedingController.drug);//显示drug页面
 Router.get('/seedling', SeedingController.seedling);//显示seedling页面
 Router.get('/seed', SeedingController.seed);//显示seed页面
 Router.get('/seedsoakdrug', SeedingController.seedsoakdrug);//显示seedsoakdrug页面
+Router.get('/seedlingspraydrug', SeedingController.seedlingspraydrug);//显示seedspraydrug页面
+
+Router.get('/plant', PlantController.plant);//显示plant页面
+Router.get('/plantusedrug', PlantController.plantusedrug);//显示plantusedrug页面
+
+
 
 Router.get('/input', StorageController.input);//显示input页面
 Router.get('/warehouse', StorageController.warehouse);//显示warehouse页面
