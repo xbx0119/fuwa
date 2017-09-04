@@ -9,11 +9,28 @@
     		height: 700px;
     		/*float: left;*/
     		color: red;
+    		overflow: hidden;
     	}
     	.control {
     		padding: 10px;
     		border-bottom: 1px solid #e0e0e0;
     	}
+    	.map {
+    		height: 650px;
+    		position: relative;
+    	}
+    	.circle {
+    		width: 80px;
+    		height: 80px;
+    		border-radius: 50%;
+    		border: 1px solid black;
+    		position: absolute;
+    		color: black;
+    		text-align: center;
+    		line-height: 80px;
+    		cursor: pointer;
+    	}
+
     </style>
 </head>
 <body>
@@ -40,7 +57,9 @@
 							</form>
                     	</div>
                     	<div class="map">
-
+	                    	<!-- <canvas id="canvas" width="1000" height="650">
+	                    		Your browser does not support the canvas element.
+	                    	</canvas> -->
                     	</div>
                     </div>
 
@@ -59,7 +78,6 @@
 
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4 && xhr.status == 200) {
-				console.log(xhr.responseText);
 				cb(xhr.responseText);
 			}
 		}
@@ -76,17 +94,108 @@
 		seed = document.querySelector("#seed_num"),
 		trace = document.querySelector("#run_trace");
 
+	var transformKey = {
+		seedid: "种子",
+		seedlingid: "秧苗",
+		plantid: "种植",
+		inputid: "入库",
+		warehouseid: "仓库",
+		feedid: "进料",
+		materialid: "原料",
+		productid: "产品"
+	};
+
 	trace.addEventListener('click', function(e) {
+		map.innerHTML = "";
 		e.preventDefault();
 		ajax('post', '/trace/trace', {
 			kind: seed.value != "" ? 'seed' : 'product',
 			code: seed.value != "" ? seed.value : product.value
 		}, function(data) {
-			console.log(JSON.parse(data))
+			var json = JSON.parse(data);
+			console.log(json.data[0])
+			var arr = [];
+			if(json.code == 1) {
+				for(var key in json.data[0]) {
+					createCircle({
+						name: transformKey[key],
+						code: json.data[0][key]
+					})
+				}
+			}
+			
+
 		})
 	})
-
-
 </script>
+	
+
+<script>
+	var map = document.querySelector(".map");
+
+	function createCircle(data) {
+		var circle = document.createElement("div");
+		circle.className = "circle";
+		circle.style.left = Math.random() * 600 + "px";
+		circle.style.top = Math.random() * 600 + "px";
+		circle.title = "id: " + data.code;
+		circle.innerHTML = data.name;
+		map.appendChild(circle)
+	}
+	// createCircle({
+	// 	name: '种子',
+	// 	code: 'asdasdasda123123123123'
+	// });
+
+	// createCircle({
+	// 	name: '种子',
+	// 	code: 'asdasdasda'
+	// });
+</script>
+
+<!-- <script>
+	var elemPool = [];
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	var config = {
+		radius: 50
+	}
+	
+	function createCircle(x, y, data) {
+		// ctx.fillStyle = "#FF0000";
+		ctx.beginPath();
+		ctx.arc(x, y, config.radius, 0, 2 * Math.PI, true);
+		ctx.font = "14px Arial";
+		// fillText(text,x,y) - 在 canvas 上绘制实心的文本
+		ctx.fillText(data.name, x - config.radius / 4, y - config.radius / 4); 
+		ctx.fillText(data.code, x - config.radius / 2, y + config.radius / 4); 
+		ctx.stroke();
+		ctx.closePath();
+		// ctx.fill();
+	}
+
+	function paintArrow(start, end, text) {
+		ctx.moveTo(start[0], start[1]);
+		ctx.lineTo(end[0], end[1]);
+		ctx.moveTo(end[0] - 10, end[1] + 10);
+		ctx.lineTo(end[0], end[1]);
+		ctx.lineTo(end[0] - 10, end[1] - 10);
+		ctx.stroke();
+	}
+
+	
+	createCircle(50, 50, {
+		name: '种子',
+		code: 'asdasdasda'
+	});
+	createCircle(200, 100, {
+		name: '种子',
+		code: 'asdasdasda'
+	});
+
+
+	paintArrow([50, 50], [200,100]);
+</script> -->
+
 </body>
 </html>

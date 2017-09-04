@@ -18,7 +18,7 @@ SeedingController.drug = function(req, res, next) {
 }
 
 //遍历seedling表
-SeedingController.seeding = function(req, res, next) {
+SeedingController.seedling = function(req, res, next) {
 	var resData = {
 		code: 0,
 		data: {}
