@@ -25,7 +25,8 @@ Router.post('/doaddperson', PersonController.doaddperson);//实现添加用户
 
 Router.get('/drug', SeedingController.drug);//显示drug页面
 Router.get('/seedling', SeedingController.seedling);//显示seedling页面
-
+Router.get('/seed', SeedingController.seed);//显示seed页面
+Router.get('/seedsoakdrug', SeedingController.seedsoakdrug);//显示seedsoakdrug页面
 
 Router.get('/input', StorageController.input);//显示input页面
 Router.get('/warehouse', StorageController.warehouse);//显示warehouse页面

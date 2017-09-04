@@ -1,5 +1,7 @@
 var drugModel = require('../models/drugModel');
 var SeedlingModel = require('../models/seedlingModel');
+var SeedModel = require('../models/seedModel');
+var SeedsoakdrugModel = require('../models/seedsoakdrugModel');
 
 var SeedingController = {};
 
@@ -18,7 +20,7 @@ SeedingController.drug = function(req, res, next) {
 }
 
 //遍历seedling表
-SeedingController.seeding = function(req, res, next) {
+SeedingController.seedling = function(req, res, next) {
 	var resData = {
 		code: 0,
 		data: {}
@@ -26,11 +28,38 @@ SeedingController.seeding = function(req, res, next) {
 	SeedlingModel.findAllSeedling(function(data) {
 		resData.data = data.data;
 
-		res.render('Seeding/seeding', resData);
+		res.render('Seeding/seedling', resData);
 	});
 
 }
 
+//遍历seed表
+SeedingController.seed = function(req, res, next) {
+	var resData = {
+		code: 0,
+		data: {}
+	}
+	SeedModel.findAllSeed(function(data) {
+		resData.data = data.data;
+
+		res.render('Seeding/seed', resData);
+	});
+
+}
+
+//遍历seedsoakdrug表
+SeedingController.seedsoakdrug = function(req, res, next) {
+	var resData = {
+		code: 0,
+		data: {}
+	}
+	SeedsoakdrugModel.findAllSeedsoakdrug(function(data) {
+		resData.data = data.data;
+
+		res.render('Seeding/seedsoakdrug', resData);
+	});
+
+}
 
 
 module.exports = SeedingController;
