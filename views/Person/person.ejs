@@ -3,6 +3,7 @@
 
 <head>
     <title>福娃糙米</title>
+    <link rel="stylesheet" type="text/css" href="/css/base.css">  
 </head>
 
 <body>
@@ -22,21 +23,29 @@
                             DataTables Advanced Tables
                         </div>
                         <!-- /.panel-heading -->
+
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>姓名</th>
-                                        <th>职位</th>
+                                        <th>员工id</th>
                                         
+                                        <th>姓名</th>
+                                        <th>性别</th>
+                                        <th>工作单位</th>
+                                        <th>岗位</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                 <% for (var i = 0;i < data.length;i++) {%>
                                     <tr class="gradeA">
+                                        <td><%=data[i].personid%></td>
+                                       
                                         <td><%=data[i].name%></td>
-                                        <td><%=data[i].account%></td>
+                                        <td><%=data[i].sex%></td>
+                                        <td><%=data[i].workplace%></td>
+                                        <td><%=data[i].job%></td>
                                     </tr>   
                                 <% } %>
                                     
@@ -51,10 +60,11 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-
+            <a href="/addperson" class="add">添加</a>
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
+
 
 </body>
 

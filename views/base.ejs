@@ -35,6 +35,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
 
 </head>
 
@@ -83,18 +84,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                                </span>
-                                
-                            </div>
-                            <!-- /input-group -->
-                        </li>
+                        
                         
                     
                         
@@ -108,7 +98,7 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> 育秧<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">药品信息</a>
+                                    <a href="/drug">药品信息</a>
                                 </li>
                                 <li>
                                     <a href="#">秧苗信息</a>
@@ -161,13 +151,19 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 仓储<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">入库管理</a>
+                                    <a href="/input">入库管理</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">仓库管理</a>
+                                    <a href="/warehouse">仓库管理</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">出库管理</a>
+                                    <a href="/warehouse2feed">出库管理</a>
+                                </li>
+                                <li>
+                                    <a href="/plant2input">plant2input</a>
+                                </li>
+                                <li>
+                                    <a href="/input2warehouse">input2warehouse</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -177,10 +173,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 粗加工<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">进料管理</a>
+                                    <a href="/feed">进料管理</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">出料管理</a>
+                                    <a href="/feed2product">出料管理</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -190,10 +186,13 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 深加工<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">原料信息</a>
+                                    <a href="/material">原料信息</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">产品信息</a>
+                                    <a href="/product">产品信息</a>
+                                </li>
+                                <li>
+                                    <a href="/material2product">material2product</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

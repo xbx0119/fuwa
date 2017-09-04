@@ -1,8 +1,8 @@
-var warehouseModel = {};
+var warehouse2feedModel = {};
 
-//遍历warehouse表
-warehouseModel.findAllwarehouse = function(callback) {
-	connection.query('select * from warehouse', function (error, results, fields) {
+//遍历warehouse2feed表
+warehouse2feedModel.findAllWarehouse2feed = function(callback) {
+	connection.query('select * from warehouse2feed', function (error, results, fields) {
 		var resData = {
 			code: 0,
 			data: {}
@@ -20,13 +20,10 @@ warehouseModel.findAllwarehouse = function(callback) {
 }
 
 //
-warehouseModel.insertWarehouse = function(inputwarehouseid, inputfeedid, inputsurface, inputcapacity, inputstandard, inputpersonid, callback) {
-	connection.query('insert into warehouse set ?',{
+warehouse2feedModel.insertWarehouse2feed = function(inputwarehouseid, inputfeedid, inputpersonid, callback) {
+	connection.query('insert into warehouse2feed set ?',{
 					warehouseid : inputwarehouseid,
 					feedid : inputfeedid,
-					surface : inputsurface,
-					capacity : inputcapacity,
-					standard : inputstandard,
 					personid : inputpersonid
 				},function(error, results, fields){
 					var resData = {
@@ -47,4 +44,4 @@ warehouseModel.insertWarehouse = function(inputwarehouseid, inputfeedid, inputsu
 
 				});
 }
-module.exports = warehouseModel;
+module.exports = warehouse2feedModel;
