@@ -1,8 +1,8 @@
-var outputModel = {};
+var seedlingModel = {};
 
-//遍历output表
-outputModel.findAlloutput = function(callback) {
-	connection.query('select * from output', function (error, results, fields) {
+//遍历seedling表
+seedlingModel.findAllSeedling = function(callback) {
+	connection.query('select * from seedling', function (error, results, fields) {
 		var resData = {
 			code: 0,
 			data: {}
@@ -19,4 +19,5 @@ outputModel.findAlloutput = function(callback) {
 	});
 }
 
-module.exports = outputModel;
+
+module.exports = seedlingModel;

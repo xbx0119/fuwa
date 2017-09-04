@@ -3,7 +3,7 @@ var feed2productModel = require('../models/feed2productModel');
 
 var RoughProcessController = {};
 
-//遍历input表
+//遍历feed表
 RoughProcessController.feed = function(req, res, next) {
 	var resData = {
 		code: 0,
@@ -17,7 +17,7 @@ RoughProcessController.feed = function(req, res, next) {
 
 }
 
-//遍历warehouse表
+//遍历feed2product表
 RoughProcessController.feed2product = function(req, res, next) {
 	var resData = {
 		code: 0,

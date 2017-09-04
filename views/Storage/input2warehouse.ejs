@@ -28,10 +28,10 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
+                                        
+                                        
                                         <th>inputid</th>
-                                        <th>harvestdate</th>
-                                        <th>quantity</th>
-                                        <th>inputdate</th>
+                                        <th>warehouseid</th>
                                         <th>personid</th>
                                     </tr>
                                 </thead>
@@ -39,10 +39,10 @@
 
                                 <% for (var i = 0;i < data.length;i++) {%>
                                     <tr class="gradeA">
+                                        
+                                       
                                         <td><%=data[i].inputid%></td>
-                                        <td><%=data[i].harvestdate%></td>
-                                        <td><%=data[i].quantity%></td>
-                                        <td><%=data[i].inputdate%></td>
+                                        <td><%=data[i].warehouseid%></td>
                                         <td><%=data[i].personid%></td>
                                     </tr>   
                                 <% } %>
