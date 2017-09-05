@@ -47,4 +47,25 @@ warehouseModel.insertWarehouse = function(inputwarehouseid, inputfeedid, inputsu
 
 				});
 }
+
+//仓库查询
+warehouseModel.findWarehouseInfoById = function(id, callback) {
+	var resData = {
+		code: 1,
+		data: null
+	}
+	// var sql = 'select * from seed where seedid = "' + id + '"';
+	var sql = 'select * from warehouse where warehouse.warehouseid = "' + id + '"';
+	//console.log(sql)
+	connection.query(sql, function(error, results) {
+		if(error) {
+			resData.code = 0;
+			console.log(error)
+		}else {
+			resData.data = results;
+		}
+		callback(resData);
+	});
+}
+
 module.exports = warehouseModel;

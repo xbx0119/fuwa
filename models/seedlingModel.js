@@ -20,4 +20,24 @@ seedlingModel.findAllSeedling = function(callback) {
 }
 
 
+//秧苗查询
+seedlingModel.findSeedlingInfoById = function(id, callback) {
+	var resData = {
+		code: 1,
+		data: null
+	}
+	var sql = 'select * from seedling,seedlingspraydrug where seedling.seedlingid = "' + id + '" and seedlingspraydrug.seedlingid = "' + id + '"';
+	console.log(sql)
+	connection.query(sql, function(error, results) {
+		if(error) {
+			resData.code = 0;
+			console.log(error)
+		}else {
+			resData.data = results;
+			console.log(results);
+		}
+		callback(resData);
+	});
+}
+
 module.exports = seedlingModel;

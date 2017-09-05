@@ -15,7 +15,7 @@ struct:
 		- 种植信息 plant
 		- 种植用药信息（除虫施肥） plantusedrug
 	- 收割管理 HarvestManagement
-		- 收割信息 harvest
+		- 收割信息 harvest  ->delete
 
 
 			+plant2input
