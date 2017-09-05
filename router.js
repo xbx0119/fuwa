@@ -69,6 +69,12 @@ Router.get('/safetrace/', Trace.indexsafe);
 Router.post('/trace/trace', Trace.trace);
 
 
-Router.get('/api/getseedinfo/:seedid', getInfo.getSeedInfo);
+Router.get('/api/getseedinfo/:seedid', getInfo.getSeedInfo);//种子查询
+Router.get('/api/getseedlinginfo/:seedlingid', getInfo.getSeedlingInfo);//秧苗查询
+Router.get('/api/getplantinfo/:plantid', getInfo.getPlantInfo);//种植查询
+Router.get('/api/getinputinfo/:inputid', getInfo.getInputInfo);//入库查询
+Router.get('/api/getwarehouseinfo/:warehouseid', getInfo.getWarehouseInfo);//仓库查询
+Router.get('/api/getfeedinfo/:feedid', getInfo.getFeedInfo);//进料查询
+
 
 module.exports = Router;

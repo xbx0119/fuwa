@@ -19,12 +19,14 @@ seedModel.findAllSeed = function(callback) {
 	});
 }
 
+//种子查询
 seedModel.findSeedInfoById = function(id, callback) {
 	var resData = {
 		code: 1,
 		data: null
 	}
-	var sql = 'select * from seed where seedid = "' + id + '"';
+	// var sql = 'select * from seed where seedid = "' + id + '"';
+	var sql = 'select * from seed,seedsoakdrug where seed.seedid = "' + id + '" and seedsoakdrug.seedid = "' + id + '"';
 	console.log(sql)
 	connection.query(sql, function(error, results) {
 		if(error) {
