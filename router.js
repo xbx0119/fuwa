@@ -10,6 +10,8 @@ var DeepProcessController = require('./controllers/DeepProcessController');
 var SeedingController = require('./controllers/SeedingController');
 var PlantController = require('./controllers/PlantController');
 
+var getInfo = require('./api/getInfo');
+
 
 var Trace = require('./controllers/Trace');
 
@@ -65,5 +67,8 @@ Router.get('/material2product', DeepProcessController.material2product);//显示
 Router.get('/trace/', Trace.index);
 Router.get('/safetrace/', Trace.indexsafe);
 Router.post('/trace/trace', Trace.trace);
+
+
+Router.get('/api/getseedinfo/:seedid', getInfo.getSeedInfo);
 
 module.exports = Router;
