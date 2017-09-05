@@ -19,6 +19,25 @@ plant2inputModel.findAllPlant2input = function(callback) {
 	});
 }
 
+//入库查询
+plant2inputModel.findInputInfoById = function(id, callback) {
+	var resData = {
+		code: 1,
+		data: null
+	}
+	// var sql = 'select * from seed where seedid = "' + id + '"';
+	var sql = 'select * from plant2input where plant2input.inputid = "' + id + '"';
+	//console.log(sql)
+	connection.query(sql, function(error, results) {
+		if(error) {
+			resData.code = 0;
+			console.log(error)
+		}else {
+			resData.data = results;
+		}
+		callback(resData);
+	});
+}
 
 
 module.exports = plant2inputModel;

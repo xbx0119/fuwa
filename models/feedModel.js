@@ -19,4 +19,25 @@ feedModel.findAllfeed = function(callback) {
 	});
 }
 
+
+//进料查询
+feedModel.findFeedInfoById = function(id, callback) {
+	var resData = {
+		code: 1,
+		data: null
+	}
+	// var sql = 'select * from seed where seedid = "' + id + '"';
+	var sql = 'select * from feed where feed.feedid = "' + id + '"';
+	//console.log(sql)
+	connection.query(sql, function(error, results) {
+		if(error) {
+			resData.code = 0;
+			console.log(error)
+		}else {
+			resData.data = results;
+		}
+		callback(resData);
+	});
+}
+
 module.exports = feedModel;
