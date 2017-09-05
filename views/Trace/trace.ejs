@@ -54,7 +54,10 @@
 	                    		Your browser does not support the canvas element.
 	                    	</canvas> -->
 	                    	<div class="map"></div>
-	                    	<div class="circle-info">sda</div>
+	                    	<div class="circle-info">
+	                    		<div class="info-arrow"></div>
+	                    		<div class="info-content"></div>
+	                    	</div>
                     	</div>
                     </div>
 
@@ -160,8 +163,8 @@
 		e.preventDefault();
 
 		if(e.target.className == 'circle') {
-			infodiv.style.left = e.target.offsetLeft - 60 + 'px';
-			infodiv.style.top = e.target.offsetTop + 95 + 'px';
+			infodiv.style.left = e.target.offsetLeft - 0 + 'px';
+			infodiv.style.top = e.target.offsetTop + 70 + 'px';
 			infodiv.style.visibility = 'visible';
 		}else {
 			infodiv.style.visibility = 'hidden';

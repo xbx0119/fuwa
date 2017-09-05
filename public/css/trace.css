@@ -43,16 +43,31 @@
     z-index: 10;
 }
 .circle-info {
-    width: 200px;
-    height: 300px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    width: 250px;
+    height: 230px;    
     position: absolute;
     top: 0;
     left: 0;
-    background: #f0f0f0;
     visibility: hidden;
     z-index: 100;
+}
+.info-arrow {
+    width: 30px;
+    height: 30px;
+    border-bottom: 15px solid #EEEEFF;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid transparent;
+    position: relative;
+    left: 30px;
+    top: 0px;
+}
+.info-content {
+    height: 200px;
+    width: 100%;
+    background: #EEEEFF;
+    /*border: 1px solid #ccc;*/
+    border-radius: 3px;
 }
 .path {
 	height: 10px;
