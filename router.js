@@ -63,6 +63,7 @@ Router.get('/product', DeepProcessController.product);//显示product页面
 Router.get('/material2product', DeepProcessController.material2product);//显示material2product页面
 
 Router.get('/trace/', Trace.index);
+Router.get('/safetrace/', Trace.indexsafe);
 Router.post('/trace/trace', Trace.trace);
 
 module.exports = Router;
