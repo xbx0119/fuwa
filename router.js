@@ -75,6 +75,10 @@ Router.get('/api/getplantinfo/:plantid', getInfo.getPlantInfo);//种植查询
 Router.get('/api/getinputinfo/:inputid', getInfo.getInputInfo);//入库查询
 Router.get('/api/getwarehouseinfo/:warehouseid', getInfo.getWarehouseInfo);//仓库查询
 Router.get('/api/getfeedinfo/:feedid', getInfo.getFeedInfo);//进料查询
+Router.get('/api/getmaterialinfo/:materialid', getInfo.getMaterialInfo);//进料查询
+Router.get('/api/getproductinfo/:productid', getInfo.getProductInfo);//进料查询
+
+Router.get('/api/getproductbyseed/:seedid', getInfo.getProductBySeed);//
 
 
 module.exports = Router;

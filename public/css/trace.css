@@ -5,12 +5,15 @@
 	color: red;
 	overflow: hidden;
 }
+
 .control {
+	height: 55px;
 	padding: 10px;
+	box-sizing: border-box;
 	border-bottom: 1px solid #e0e0e0;
 }
 .maparea {
-	height: 100%;
+	height: calc(100% - 55px);
 	position: relative;
 }
 .map {
@@ -42,14 +45,23 @@
 	cursor: pointer;
     z-index: 10;
 }
+
+@keyframes showinfo {
+	from {transform: scale(0)}
+	to {transform: scale(1)}
+}
 .circle-info {
-    width: 250px;
-    height: 230px;    
+    min-width: 200px;
+    max-width: 400px;
+    min-height: 230px;
+    max-height: 400px;    
     position: absolute;
     top: 0;
     left: 0;
     visibility: hidden;
     z-index: 100;
+    animation: showinfo 0.3s;
+    transform-origin: 0 0;
 }
 .info-arrow {
     width: 30px;
@@ -63,12 +75,20 @@
     top: 0px;
 }
 .info-content {
-    height: 200px;
-    width: 100%;
+	height: auto;
+	width: 100%;
     background: #EEEEFF;
     /*border: 1px solid #ccc;*/
     border-radius: 3px;
+    padding: 10px;
+    overflow: auto;
 }
+.info-content li {
+	color: #333;
+	list-style-type: none;
+	width: 100%;
+}
+
 .path {
 	height: 10px;
     /*width: 100px;*/
@@ -111,4 +131,35 @@
 	display: inline-block;
 	width: 100%;
 	height: 100%;
+}
+
+
+.safe-rank-intro {
+	width: 500px;
+	height: 30px;
+	line-height: 30px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+	font-size: 18px;
+	color: #333;
+}
+.safe-rank-intro span {
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	margin-right: 10px;
+	/*vertical-align: middle;*/
+	text-indent: 35px;
+	font-size: 18px;	
+	/*float: left;*/
+}
+.safe-rank-intro span:nth-child(1) {
+	background: green;
+}
+.safe-rank-intro span:nth-child(2) {
+	background: yellow;
+}
+.safe-rank-intro span:nth-child(3) {
+	background: red;
 }

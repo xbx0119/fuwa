@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>福娃糙米</title>
+    <title>稻米食品全产业链信息系统</title>
     <link rel="stylesheet" type="text/css" href="/css/trace.css">
     <style type="text/css">
 	    .map {
@@ -31,7 +31,7 @@
 							<form class="form-inline">
 								<div class="form-group">
 									<select class="form-control" id="seed_num">
-										<option value="">请输入种子编号</option>
+										<option value="">请选择种子编号</option>
 										<% for(var i = 0;i < seed.length;i++) { %>
 											<option value="<%=seed[i].seedid%>"><%=seed[i].seedid%></option>
 										<% } %>
@@ -39,14 +39,14 @@
 								</div>
 								<div class="form-group">
 									<select class="form-control" id="product_num">
-										<option value="">请输入产品编号</option>
+										<option value="">请选择产品编号</option>
 										<% for(var i = 0;i < product.length;i++) { %>
 											<option value="<%=product[i].productid%>"><%=product[i].productid%></option>
 										<% } %>
 									</select>
 								</div>
 								<button type="submit" class="btn btn-default" id="run_trace">开始溯源</button>
-								<input type="reset" class="btn btn-default" />
+								<input type="reset" class="btn btn-default" id="reset" />
 							</form>
                     	</div>
                     	<div class="maparea">
@@ -54,10 +54,10 @@
 	                    		Your browser does not support the canvas element.
 	                    	</canvas> -->
 	                    	<div class="map"></div>
-	                    	<div class="circle-info">
+	                    	<!-- <div class="circle-info">
 	                    		<div class="info-arrow"></div>
 	                    		<div class="info-content"></div>
-	                    	</div>
+	                    	</div> -->
                     	</div>
                     </div>
 
@@ -73,44 +73,21 @@
         </div>
         
     </div>
+<script type="text/javascript" src="/js/Circle.js"></script>
 <script type="text/javascript">
-	function ajax(method, url, data, cb) {
-		var xhr;
-		if(window.XMLHttpRequest) {
-			xhr = new XMLHttpRequest();
-		}else {
-			xhr = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-		xhr.onreadystatechange = function() {
-			if(xhr.readyState == 4 && xhr.status == 200) {
-				cb(xhr.responseText);
-			}
-		}
-		xhr.open(method, url);
-		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		var str = [];
-		for(var key in data) {
-			str.push(key + "=" + data[key]);
-		}
-		xhr.send(str.join("&"));
-	}
-
+	
 	var product = document.querySelector("#product_num"),
 		seed = document.querySelector("#seed_num"),
-		trace = document.querySelector("#run_trace");
+		trace = document.querySelector("#run_trace"),
+		reset = document.querySelector("#reset");
 
-	var transformKey = {
-		seedid: "种子",
-		seedlingid: "秧苗",
-		plantid: "种植",
-		inputid: "入库",
-		warehouseid: "仓库",
-		feedid: "进料",
-		materialid: "原料",
-		productid: "产品"
-	};
 
+	reset.addEventListener('click', function() {
+		map.innerHTML = "";
+		confirm.innerHTML = "";
+		Circle.prototype.init();
+		window.location.reload();
+	})
 
 	trace.addEventListener('click', function(e) {
 		e.preventDefault();
@@ -136,138 +113,33 @@
 				});
 				// new Path(pool[0], pool[1])
 			}
-			
-
 		})
 	})
-</script>
-	
 
-<script>
 	var map = document.querySelector(".map");
 	var menu = document.querySelector(".contextmenu");
-	var infodiv = document.querySelector(".circle-info");
 
-	map.addEventListener('contextmenu', function(e) {
-		e.preventDefault();
+	// map.addEventListener('contextmenu', function(e) {
+	// 	e.preventDefault();
 
-		console.log(e.target)
-		if(e.target.className == 'circle') {
-			menu.style.left = e.clientX + 'px';
-			menu.style.top = e.clientY + 'px';
-			menu.style.visibility = 'visible';
-		}
-	});
+	// 	console.log(e.target)
+	// 	if(e.target.className == 'circle') {
+	// 		menu.style.left = e.clientX + 'px';
+	// 		menu.style.top = e.clientY + 'px';
+	// 		menu.style.visibility = 'visible';
+	// 	}
+	// });
 
 	map.addEventListener('click', function(e) {
 		e.preventDefault();
-
-		if(e.target.className == 'circle') {
-			infodiv.style.left = e.target.offsetLeft - 0 + 'px';
-			infodiv.style.top = e.target.offsetTop + 70 + 'px';
-			infodiv.style.visibility = 'visible';
-		}else {
-			infodiv.style.visibility = 'hidden';
-		}
+		Circle.prototype.showInfo(e)
 	});
 
 	document.addEventListener('click', function() {
 		menu.style.visibility = 'hidden';
 	});
-
-	function Circle(data) {
-		this.x = this.accumulate.x;
-		this.y = this.accumulate.y;
-
-		this.name = data.name;
-		this.code = data.code;
-
-		this.create(data)	
-	}
-	Circle.prototype.init = function() {
-		console.log("init")
-		this.accumulate = {
-			x: 100,
-			y: 80
-		};
-		this.storePath = {
-			start: null
-		};
-		this.pool = [];
-	};
-	Circle.prototype.addLine = function() {
-		console.log("addLine")
-		this.accumulate = {
-			x: 100,
-			y: this.accumulate.y += 150
-		};
-	};
-	Circle.prototype.accumulate = {
-		x: 100,
-		y: 100
-	};
-	Circle.prototype.pool = [];
-	Circle.prototype.create = function(data) {
-
-		var elem = null;
-		var hasElem = this.pool.some(function(item, index) {
-			if(item.name == data.name && item.code == data.code) {
-				elem = item;
-				return true;
-			}
-		});
-
-		if(!hasElem) {
-			var circle = document.createElement("div");
-			circle.className = "circle";
-			this.accumulate.x = this.accumulate.x + 150;
-			circle.style.left = this.x + "px";
-			circle.style.top = this.y + "px";
-			circle.title = "id: " + data.code;
-			circle.innerHTML = data.name;
-			map.appendChild(circle);
-
-			if(this.storePath.start == null) {
-				this.storePath.start = this;
-			}else {
-				new Path(this.storePath.start, this);
-				this.storePath.start = this;
-			}
-		}else {
-			Circle.prototype.accumulate.x += 150;
-			Circle.prototype.storePath.start = elem;
-			console.log(Circle.prototype.storePath.start)
-		}
-	};
-	Circle.prototype.storePath = {
-		start: null
-	}
-
-
-	function Path(start, end) {
-		this.start = start;
-		this.end = end;
-
-		this.create(start, end);
-	}
-	Path.prototype.create = function(start, end) {
-		var path = document.createElement("span");
-		path.className = "path";
-
-		var deg = (end.y  - start.y) / (end.x - start.x);
-
-		path.style.width = Math.hypot(end.y - start.y, end.x - start.x) - 80 + 'px';
-		path.style.left = start.x + 40 + 'px';
-		path.style.top = start.y + 40 + 'px';
-
-		path.style.transform = "rotate(" + Math.atan(deg) * 180 / Math.PI + "deg)" + 
-								"translate(40px, 0px)";
-		path.style.transformOrigin = "0 0";
-		
-		map.appendChild(path)
-	}
-
 </script>
+
 
 
 </body>

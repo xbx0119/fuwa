@@ -8,7 +8,6 @@ var FeedModel = require('../models/feedModel');
 var GetInfo = {};
 
 
-
 //种子
 GetInfo.getSeedInfo = function(req, res, next) {
 
@@ -97,6 +96,46 @@ GetInfo.getFeedInfo = function(req, res, next) {
 			res.send("error");
 		}
 	})
+}
+
+GetInfo.getMaterialInfo = function(req, res, next) {
+	var materialid = req.params.materialid;
+
+	var sql = "select materialid, kind, weight, source, date from material where materialid = '" + materialid + "'";
+	console.log(sql)
+	connection.query(sql, function(error, results) { 
+		if(error) {
+			res.send("error")
+		}else {
+			res.send(results);
+		}
+	});
+}
+
+GetInfo.getProductInfo = function(req, res, next) {
+	var productid = req.params.productid;
+
+	var sql = "select productid, name, specification, flavor, date from product where productid = '" + productid + "'";
+	console.log(sql)
+	connection.query(sql, function(error, results) {
+		if(error) {
+			res.send("error")
+		}else {
+			res.send(results);
+		}
+	});
+}
+
+GetInfo.getProductBySeed = function(req, res, next) {
+		var seedid = req.params.seedid;
+
+		SeedModel.findProductBySeed(seedid, function(resData) {
+			if(resData.code == 1) {
+				res.send(resData.data);
+			}else {
+				res.send("error");
+			}
+		})
 
 }
 
