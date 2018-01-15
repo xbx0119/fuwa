@@ -13,6 +13,10 @@ git clone https://github.com/xbx0119/fuwa.git
 # 安装
 cd fuwa
 npm install
+
+# 运行
 npm start
+
+# 浏览器访问 localhost:3000 
 
 ```
